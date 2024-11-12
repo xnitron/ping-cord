@@ -6,7 +6,6 @@ const HOSTS = process.env.HOSTS ? process.env.HOSTS.split(',') : [];
 const TIMEOUT = process.env.TIMEOUT || 5000;
 
 const ping = () => {
-    date.setHours(date.getHours() + 2);
     setInterval(() => {
         HOSTS.forEach(host => {
             http.get(host, (response) => {
