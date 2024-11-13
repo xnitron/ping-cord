@@ -12,8 +12,13 @@ client.once('ready', () => {
 });
 
 const sendMessage = async (content) => {
-    const channel = await client.channels.fetch(channelId);
-    channel.send(content);
+    try {
+        const channel = await client.channels.fetch(channelId);
+        channel.send(content);
+
+    } catch (error) {
+        eventEmitter.emit('error', error);
+    }
 };
 
 client.login(token);
